@@ -11,13 +11,13 @@ public class ArrayModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "numArray can't be empty")
-    private String numArray;
+    private int[] numArray;
     @NotBlank(message = "number can't be empty")
     private int number;
 
     public ArrayModel() {}
 
-    public ArrayModel(String numArray, int number) {
+    public ArrayModel(int[] numArray, int number) {
         this.numArray = numArray;
         this.number = number;
     }
@@ -26,11 +26,15 @@ public class ArrayModel {
         return id;
     }
 
-    public String getNumArray() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int[] getNumArray() {
         return numArray;
     }
 
-    public void setNumArray(String numArray) {
+    public void setNumArray(int[] numArray) {
         this.numArray = numArray;
     }
 

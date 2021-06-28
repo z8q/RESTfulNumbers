@@ -1,7 +1,9 @@
 package com.z8q.service;
 
+import org.springframework.stereotype.Service;
 import java.util.*;
 
+@Service
 public class FindNumberService {
 
     public Integer showNumber(int[] arr, int number) {

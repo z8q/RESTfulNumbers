@@ -8,7 +8,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ArrNumDto {
     private Long id;
-    private int[] numArray;
+    private String numArray;
     private int number;
 
     public ArrayModel toArrayModel() {

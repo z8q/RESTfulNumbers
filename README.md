@@ -8,3 +8,6 @@ add new numbers to array is also possible
 
 h2 embedded
 url: jdbc:h2:~/number
+
+spring.jpa.hibernate.ddl-auto=validate
+при первом запуске в этой строке указать значение create, потом снова поставить validate

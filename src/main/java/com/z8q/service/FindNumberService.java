@@ -1,21 +1,44 @@
 package com.z8q.service;
 
+import com.z8q.dto.ArrNumDto;
+import com.z8q.model.ArrayModel;
+import com.z8q.repository.NumRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.sql.SQLOutput;
 import java.util.*;
 
 @Service
 public class FindNumberService {
 
-    public Integer showNumber(int[] arr, int number) {
+    @Autowired
+    private NumRepo numRepo;
 
-        int[] numArray = arr;
-        int mainNumber = number;
+    public List<ArrayModel> list() {
+        return numRepo.findAll();
+    }
+
+    public Integer showNumber(String arr, int number) {
+
+        String[] items = arr.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        int[] results = new int[items.length];
+
+        for (int i = 0; i < items.length; i++) {
+            try {
+                results[i] = Integer.parseInt(items[i]);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Something wrong with parsing");
+            };
+        }
+
         Map<Integer, Integer> tenMinusElement = new HashMap<>();
         List<Integer> list = new ArrayList<>();
 
-        for (int element : numArray) {
-            int x = Math.abs(element - mainNumber);
-            tenMinusElement.put(element, x);
+        for (int i = 0; i < items.length; i++) {
+            int x = Math.abs(results[i] - number);
+            tenMinusElement.put(results[i], x);
         }
         int x = Collections.min(tenMinusElement.values());
 
@@ -26,4 +49,12 @@ public class FindNumberService {
         }
         return Collections.max(list);
     }
+
+    public void saveData(ArrNumDto arrNumDto, String numArray, int number) {
+
+        arrNumDto.setNumArray(numArray);
+        arrNumDto.setNumber(number);
+        numRepo.save(arrNumDto.toArrayModel());
+    }
 }
+

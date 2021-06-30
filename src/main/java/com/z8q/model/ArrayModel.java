@@ -1,23 +1,28 @@
 package com.z8q.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @Entity
 @Table(name = "numbers")
-public class ArrayModel {
+public class ArrayModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank(message = "numArray can't be empty")
-    private int[] numArray;
-    @NotBlank(message = "number can't be empty")
+
+
+    private String numArray;
     private int number;
 
-    public ArrayModel() {}
 
-    public ArrayModel(int[] numArray, int number) {
+    public ArrayModel() {
+    }
+
+    public ArrayModel(String numArray, int number) {
         this.numArray = numArray;
         this.number = number;
     }
@@ -30,11 +35,11 @@ public class ArrayModel {
         this.id = id;
     }
 
-    public int[] getNumArray() {
+    public String getNumArray() {
         return numArray;
     }
 
-    public void setNumArray(int[] numArray) {
+    public void setNumArray(String numArray) {
         this.numArray = numArray;
     }
 

@@ -16,6 +16,8 @@ public class FindNumberService {
     @Autowired
     private NumRepo numRepo;
 
+    private int theClosestNumber;
+
     public List<ArrayModel> list() {
         return numRepo.findAll();
     }
@@ -47,13 +49,15 @@ public class FindNumberService {
                 list.add((Integer) element.getKey());
             }
         }
+        this.theClosestNumber = Collections.max(list);
         return Collections.max(list);
     }
 
-    public void saveData(ArrNumDto arrNumDto, String numArray, int number) {
+    public void saveData(ArrNumDto arrNumDto, String numArray, int number, int resultNumber) {
 
         arrNumDto.setNumArray(numArray);
         arrNumDto.setNumber(number);
+        arrNumDto.setResultNumber(theClosestNumber);
         numRepo.save(arrNumDto.toArrayModel());
     }
 }

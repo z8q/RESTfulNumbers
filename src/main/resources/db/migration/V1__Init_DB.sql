@@ -4,5 +4,6 @@ CREATE TABLE numbers (
 id int8 not null,
 numArray varchar(255),
 number integer,
+resultNumber integer,
 primary key (id)
 );

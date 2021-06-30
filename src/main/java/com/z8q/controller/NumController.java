@@ -24,10 +24,11 @@ public class NumController {
 
         String numArray = arrNumDto.getNumArray();
         int number = arrNumDto.getNumber();
+        int resultNumber = arrNumDto.getResultNumber();
 
         int response = findNumberService.showNumber(numArray, number);
 
-        findNumberService.saveData(arrNumDto, numArray, number);
+        findNumberService.saveData(arrNumDto, numArray, number, resultNumber);
 
         return ResponseEntity.ok(response);
     }

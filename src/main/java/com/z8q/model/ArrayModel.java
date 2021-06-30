@@ -14,18 +14,23 @@ public class ArrayModel{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     private String numArray;
     private int number;
-
+    private int resultNumber;
 
     public ArrayModel() {
     }
 
-    public ArrayModel(String numArray, int number) {
+    public ArrayModel(String numArray, int number, int resultNumber) {
         this.numArray = numArray;
         this.number = number;
+        this.resultNumber = resultNumber;
     }
+
+//    public ArrayModel(String numArray, int number) {
+//        this.numArray = numArray;
+//        this.number = number;
+//    }
 
     public Long getId() {
         return id;
@@ -49,5 +54,13 @@ public class ArrayModel{
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public int getResultNumber() {
+        return resultNumber;
+    }
+
+    public void setResultNumber(int resultNumber) {
+        this.resultNumber = resultNumber;
     }
 }

@@ -10,12 +10,14 @@ public class ArrNumDto {
     private Long id;
     private String numArray;
     private int number;
+    private int resultNumber;
 
     public ArrayModel toArrayModel() {
         ArrayModel arrayModel = new ArrayModel();
         arrayModel.setId(id);
         arrayModel.setNumArray(numArray);
         arrayModel.setNumber(number);
+        arrayModel.setResultNumber(resultNumber);
 
         return arrayModel;
     }
@@ -25,6 +27,7 @@ public class ArrNumDto {
         arrNumDto.setId(arrayModel.getId());
         arrNumDto.setNumArray(arrayModel.getNumArray());
         arrNumDto.setNumber(arrayModel.getNumber());
+        arrNumDto.setResultNumber(arrayModel.getResultNumber());
 
         return arrNumDto;
     }

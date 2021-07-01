@@ -9,4 +9,6 @@
 /.idea
 /target
 /RESTfulNumbers.iml
+*.DS_Store
+._*
 
